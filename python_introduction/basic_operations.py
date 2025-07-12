@@ -1,10 +1,12 @@
-number1 = 10
-number2 = 5
-
-sum_result = number1 + number2
-difference = number1 - number2
-product = number1 * number2
-
-print("Sum of", number1, "and", number2, "is", sum_result)
-print("Difference of", number1, "and", number2, "is", difference)
-print("Product of", number1, "and", number2, "is", product)
+P = 1000  
+R = 0.05  
+T = 3     
+I = P * R * T
+print("Principal (P):", P)
+print("Annual Rate (R):", R)
+print("Time (T):", T, "years")
+print("Simple Interest (I):", I)
+Principal (P): 1000
+Annual Rate (R): 0.05
+Time (T): 3 years
+Simple Interest (I): 150.0
