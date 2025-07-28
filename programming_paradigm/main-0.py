@@ -1,7 +1,7 @@
 import sys
 from bank_account import BankAccount
 
-account = BankAccount()  # Starts with $100.00
+account = BankAccount()  
 
 if len(sys.argv) < 2:
     print("Usage: python main-0.py <operation>:<amount> OR display")
