@@ -1,17 +1,30 @@
-class BankAccount:
-    def __init__(self, balance=100):
-        self.balance = balance
+import sys
+from bank_account import BankAccount
 
-    def deposit(self, amount):
-        self.balance += amount
-        print(f"Deposited: ${int(amount)}")
+account = BankAccount()  # Default $100
 
-    def withdraw(self, amount):
-        if amount > self.balance:
-            print("Insufficient funds.")
-        else:
-            self.balance -= amount
-            print(f"Withdrew: ${int(amount)}")
+if len(sys.argv) < 2:
+    print("Usage: python main-0.py <operation>:<amount> OR display")
+    sys.exit(1)
 
-    def display_balance(self):
-        print(f"Current Balance: ${int(self.balance)}")
+arg = sys.argv[1].lower()
+
+if arg == "display":
+    account.display_balance()
+
+elif ":" in arg:
+    operation, amount_str = arg.split(":")
+    try:
+        amount = int(amount_str)
+    except ValueError:
+        print("Invalid amount.")
+        sys.exit(1)
+
+    if operation == "deposit":
+        account.deposit(amount)
+    elif operation == "withdraw":
+        account.withdraw(amount)
+    else:
+        print("Unknown operation.")
+else:
+    print("Invalid command format. Use deposit:<amount>, withdraw:<amount>, or display.")

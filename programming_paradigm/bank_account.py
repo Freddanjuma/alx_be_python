@@ -1,3 +1,4 @@
+
 class BankAccount:
     def __init__(self, balance=100):
         self.balance = balance
