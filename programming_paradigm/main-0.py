@@ -1,7 +1,7 @@
 import sys
 from bank_account import BankAccount
 
-account = BankAccount()  # Default $100
+account = BankAccount()  # Starts with $100.00
 
 if len(sys.argv) < 2:
     print("Usage: python main-0.py <operation>:<amount> OR display")
@@ -13,9 +13,9 @@ if arg == "display":
     account.display_balance()
 
 elif ":" in arg:
-    operation, amount_str = arg.split(":")
+    operation, amount_str = arg.split(":", 1)
     try:
-        amount = int(amount_str)
+        amount = float(amount_str)
     except ValueError:
         print("Invalid amount.")
         sys.exit(1)
