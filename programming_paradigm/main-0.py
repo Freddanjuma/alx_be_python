@@ -1,34 +1,17 @@
-import sys
-from bank_account import BankAccount
+class BankAccount:
+    def __init__(self, balance=100):
+        self.balance = balance
 
-if len(sys.argv) < 2:
-    print("Usage: python3 main.py <operation> [amount]")
-    sys.exit(1)
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited: ${int(amount)}")
 
-operation = sys.argv[1]
-account = BankAccount(500)
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient funds.")
+        else:
+            self.balance -= amount
+            print(f"Withdrew: ${int(amount)}")
 
-if operation == "deposit":
-    if len(sys.argv) != 3:
-        print("Usage: python3 main.py deposit <amount>")
-        sys.exit(1)
-    amount = float(sys.argv[2])
-    account.deposit(amount)
-    account.display_balance()
-
-elif operation == "withdraw":
-    if len(sys.argv) != 3:
-        print("Usage: python3 main.py withdraw <amount>")
-        sys.exit(1)
-    amount = float(sys.argv[2])
-    if account.withdraw(amount):
-        print("Withdrawal successful.")
-    else:
-        print("Insufficient funds.")
-    account.display_balance()
-
-elif operation == "balance":
-    account.display_balance()
-
-else:
-    print("Unknown operation. Use 'deposit', 'withdraw', or 'balance'.")
+    def display_balance(self):
+        print(f"Current Balance: ${int(self.balance)}")
